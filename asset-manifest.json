@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/safespine/static/css/main.dfcd33f6.css",
+    "main.js": "/safespine/static/js/main.2f3e5b69.js",
+    "index.html": "/safespine/index.html",
+    "main.dfcd33f6.css.map": "/safespine/static/css/main.dfcd33f6.css.map",
+    "main.2f3e5b69.js.map": "/safespine/static/js/main.2f3e5b69.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dfcd33f6.css",
+    "static/js/main.2f3e5b69.js"
+  ]
+}
