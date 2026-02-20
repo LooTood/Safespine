@@ -1,0 +1,244 @@
+/* SafeSpine App Styles */
+
+/* Hero section */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0c1222;
+}
+
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(12, 18, 34, 0.75), rgba(12, 18, 34, 0.85)),
+    url('https://images.seattleschild.com/wp-content/uploads/2022/09/iStock-515262858.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  will-change: transform;
+}
+
+/* Particle canvas */
+.particle-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Section transitions */
+.section-divider {
+  position: relative;
+}
+
+.section-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #0ea5e9, #10b981, transparent);
+  border-radius: 2px;
+}
+
+/* Info card styles */
+.info-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+}
+
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0ea5e9, #10b981);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  transform-origin: left;
+}
+
+.info-card:hover::before {
+  transform: scaleX(1);
+}
+
+.info-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px -10px rgba(14, 165, 233, 0.15);
+}
+
+/* Health effect cards */
+.health-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+}
+
+.health-card .card-icon-wrap {
+  transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+}
+
+.health-card:hover .card-icon-wrap {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.health-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: linear-gradient(to top, rgba(14, 165, 233, 0.05), transparent);
+  transition: height 0.5s ease;
+}
+
+.health-card:hover::after {
+  height: 100%;
+}
+
+/* Stat card pulse */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(14, 165, 233, 0.08);
+  border-radius: 50%;
+  transition: width 0.6s ease, height 0.6s ease, top 0.6s ease, left 0.6s ease;
+}
+
+.stat-card:hover::before {
+  width: 300px;
+  height: 300px;
+  top: calc(50% - 150px);
+  left: calc(50% - 150px);
+}
+
+/* Prevention step number */
+.step-number {
+  position: relative;
+  z-index: 1;
+}
+
+.step-number::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.3), rgba(16, 185, 129, 0.3));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.step-row:hover .step-number::after {
+  opacity: 1;
+}
+
+/* Calculator result */
+.calc-result {
+  animation: result-pop 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes result-pop {
+  0% { transform: scale(0.9); opacity: 0; }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Scroll indicator bounce */
+.scroll-indicator {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-12px); }
+  60% { transform: translateY(-6px); }
+}
+
+/* Counter animation */
+.counter-animate {
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* Image mask */
+.image-mask {
+  position: relative;
+}
+
+.image-mask::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(135deg, #0ea5e9, #10b981);
+  border-radius: 20px;
+  opacity: 0.2;
+  filter: blur(20px);
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+.image-mask:hover::before {
+  opacity: 0.35;
+}
+
+/* Reference card */
+.ref-card {
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.ref-card:hover {
+  border-left-color: #0ea5e9;
+  transform: translateX(4px);
+}
+
+/* Mobile nav */
+.mobile-nav-enter {
+  animation: nav-slide-down 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes nav-slide-down {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Focus visible styles */
+input:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+}
+
+button:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+}
